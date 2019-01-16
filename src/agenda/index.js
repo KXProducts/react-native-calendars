@@ -407,7 +407,8 @@ export default class AgendaView extends Component {
         }
 
         const peopleFilter = this.props.renderPeopleFilter();
-        const animatedPeopleFilter = peopleFilter ? <Animated.View style={peopleFilterStyle}>{peopleFilter}</Animated.View> : null;
+        const animatedPeopleFilter =
+            peopleFilter && this.state.calendarIsReady ? <Animated.View style={peopleFilterStyle}>{peopleFilter}</Animated.View> : null;
 
         return (
             <View onLayout={this.onLayout} style={[this.props.style, { flex: 1, overflow: 'hidden' }]}>
