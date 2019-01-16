@@ -444,9 +444,18 @@ export default class AgendaView extends Component {
                     {knob}
                 </Animated.View>
                 <Animated.View style={weekdaysStyle}>
-                    {this.props.showWeekNumbers && <Text allowFontScaling={false} style={this.styles.weekday} numberOfLines={1} />}
+                    {this.props.showWeekNumbers && (
+                        <Text allowFontScaling={false} style={[{ color: '#0E8BD2', fontFamily: 'Roboto-Black' }]} numberOfLines={1}>
+                            {this.state.selectedDay.toString('MMM')}
+                        </Text>
+                    )}
                     {weekDaysNames.map((day, index) => (
-                        <Text allowFontScaling={false} key={day + index} style={this.styles.weekday} numberOfLines={1}>
+                        <Text
+                            allowFontScaling={false}
+                            key={day + index}
+                            style={[{ color: '#13323D', fontFamily: 'Roboto-Regular' }]}
+                            numberOfLines={1}
+                        >
                             {day}
                         </Text>
                     ))}
