@@ -53,7 +53,7 @@ class ReactComp extends Component {
 
         let { viewableItems } = info;
 
-        if (!viewableItems) {
+        if (!viewableItems || viewableItems.length === 0) {
             return;
         }
 
