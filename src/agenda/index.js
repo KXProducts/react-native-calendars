@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Dimensions, Animated, ViewPropTypes, TouchableOpacity } from 'react-native';
+import { Text, View, Dimensions, Animated, ViewPropTypes, TouchableOpacity, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import XDate from 'xdate';
 
@@ -86,7 +86,8 @@ export default class AgendaView extends Component {
         // Peoplefilter
         renderPeopleFilter: PropTypes.func,
         // scrollCallback
-        scrollListener: PropTypes.func
+        scrollListener: PropTypes.func,
+        invitationsScreen: PropTypes.any
     };
 
     constructor(props) {
@@ -419,7 +420,10 @@ export default class AgendaView extends Component {
 
         return (
             <View onLayout={this.onLayout} style={[this.props.style, { flex: 1, overflow: 'hidden' }]}>
-                <View style={this.styles.reservations}>{this.renderReservations()}</View>
+                <ScrollView style={this.styles.reservations}>
+                    {this.props.invitationsScreen}
+                    {this.renderReservations()}
+                </ScrollView>
                 <Animated.View style={headerStyle}>
                     <Animated.View style={{ flex: 1, transform: [{ translateY: contentTranslate }] }}>
                         <CalendarList
